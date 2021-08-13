@@ -1,0 +1,21 @@
+{
+  "package": {
+    "homepage": "./",
+    "scripts": {
+      "start": "cross-env BROWSER=scripts/openSimulator.js PORT=3001 react-scripts start"
+    },
+    "dependencies": {
+      "@clockworkdog/cogs-client-react": "0.14"
+    },
+    "devDependencies": {
+      "@types/react": "17",
+      "@types/react-dom": "17",
+      "@types/node": "14",
+      "cross-env": "7",
+      "typescript": "4"
+    },
+    "eslintConfig": {
+      "extends": ["react-app"]
+    }
+  }
+}
