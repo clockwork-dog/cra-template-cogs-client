@@ -5,7 +5,7 @@
       "start": "cross-env BROWSER=scripts/openSimulator.js PORT=3001 react-scripts start"
     },
     "dependencies": {
-      "@clockworkdog/cogs-client-react": "0.14"
+      "@clockworkdog/cogs-client-react": "0.15"
     },
     "devDependencies": {
       "@types/react": "17",
