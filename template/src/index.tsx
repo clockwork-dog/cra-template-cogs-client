@@ -5,7 +5,7 @@ import { CogsConnectionProvider } from '@clockworkdog/cogs-client-react';
 
 ReactDOM.render(
   <>
-    <CogsConnectionProvider>
+    <CogsConnectionProvider audioPlayer videoPlayer>
       <App />
     </CogsConnectionProvider>
   </>,
