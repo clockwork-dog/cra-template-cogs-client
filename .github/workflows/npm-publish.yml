@@ -13,6 +13,8 @@ jobs:
         with:
           node-version: 14
           registry-url: https://registry.npmjs.org/
+      - name: Set version from git tag
+        run: yarn version --no-git-tag-version --new-version ${GITHUB_REF#refs/tags/}
       - run: yarn publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
