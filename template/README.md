@@ -32,12 +32,15 @@ Use your custom Media Master's state `Score` and bind it to any behaviour of you
 
 Tip: use **Update Values** COGS action  to update your `Score`.
 
+<img width="550" alt="Screenshot 2023-01-31 at 16 55 20" src="https://user-images.githubusercontent.com/62291986/215814743-90222ffa-7c22-4936-a335-a0d1aa62503b.png">
 
 ### Events
 
 Use your custom Media Master's event `Game Finished` and bind its option `Won` & `Lost` to any behaviour of your choice.  For example, you can trigger `Won` when your `Score` reach 10, and trigger `Lost` if your score fall to 1. When `Won` or `Lost` are triggered, you get a fun animation on your custom Media Master's interface!
 
 Tip: use **Send Device Event** COGS action.
+
+<img width="533" alt="Screenshot 2023-01-31 at 16 52 33" src="https://user-images.githubusercontent.com/62291986/215814969-4aa5619a-a59e-4b29-9f9f-fe0025e43f20.png">
 
 ### Config or Media setup
 
@@ -50,6 +53,8 @@ If you click on **Settings** in the left panel in COGS, you'll find the Timer an
 ### Media
 
 You can also play video, audio and show images on your custom Media Master using COGS actions!
+
+<img width="522" alt="Screenshot 2023-01-31 at 17 03 37" src="https://user-images.githubusercontent.com/62291986/215815088-01fc21aa-89af-498e-a3e1-d04720fd4ad3.png">
 
 ## Go further
 
