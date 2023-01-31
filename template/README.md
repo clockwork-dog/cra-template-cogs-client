@@ -1,5 +1,3 @@
-I think it would be helpful to also explain in the README what this project does and how to use it. (e.g put it in the client-content folder, enable Timer plugin, etc etc.)
-
 # My custom COGS Media Master content
 
 This is a [`create-react-app`](https://create-react-app.dev) Typescript project that connects to [COGS](https://cogs.show) using [`@clockworkdog/cogs-client-react`](https://www.npmjs.com/package/@clockworkdog/cogs-client-react) & [`@clockworkdog/cogs-client`](https://www.npmjs.com/package/@clockworkdog/cogs-client). Don't hesitate to check the documentations if you want to know more!
