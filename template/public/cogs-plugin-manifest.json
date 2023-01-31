@@ -1,0 +1,44 @@
+{
+  "config": [
+    {
+      "name": "Background Color",
+      "value": {
+        "default": "#998DF7",
+        "type": "string"
+      }
+    }
+  ],
+  "description": "",
+  "events": {
+    "fromCogs": [
+      {
+        "name": "Game Finished",
+        "value": {
+          "type": "option",
+          "options": ["Won", "Lost"]
+        }
+      }
+    ],
+    "toCogs": []
+  },
+  "media": {
+    "audio": true,
+    "video": true,
+    "images": true
+  },
+  "minCogsVersion": "4.11.0",
+  "name": "My custom Media Master",
+  "state": [
+    {
+      "name": "Score",
+      "value": {
+        "type": "number",
+        "integer": true,
+        "min": 0,
+        "default": 0
+      },
+      "writableFromCogs": true
+    }
+  ],
+  "version": "1"
+}
