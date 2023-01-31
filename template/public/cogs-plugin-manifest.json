@@ -27,7 +27,7 @@
     "images": true
   },
   "minCogsVersion": "4.11.0",
-  "name": "Media Master Test",
+  "name": "My custom Media Master",
   "state": [
     {
       "name": "Score",
