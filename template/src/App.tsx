@@ -48,13 +48,13 @@ export default function MediaPlayer() {
   }, [cogsBackgroundColor]);
 
   return (
-    <>
+    <div className="container">
       {(!isConnected) && (
         <div id="connection-status" className={isConnected ? 'connected' : ''}>
           Connecting...
         </div>
       )}
-      <div className='container'>
+      <div className='numbers'>
         <section>
           <p>Timer</p>
           <Timer  connection={cogsConnection} />
@@ -74,8 +74,8 @@ export default function MediaPlayer() {
           )}
         </article>
       )}
-      <Hint  connection={cogsConnection} />
+      <p><Hint  connection={cogsConnection} /></p>
       <Images connection={cogsConnection} fullscreen />
-    </>
+    </div>
   );
 }
