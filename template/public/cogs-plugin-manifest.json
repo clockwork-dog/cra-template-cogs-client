@@ -1,7 +1,7 @@
 {
   "config": [
     {
-      "name": "Default Background",
+      "name": "Background Color",
       "value": {
         "default": "#998DF7",
         "type": "string"
@@ -15,7 +15,7 @@
         "name": "Game Finished",
         "value": {
           "type": "option",
-          "options": ["Won", "Lost", "Finished"]
+          "options": ["Won", "Lost"]
         }
       }
     ],

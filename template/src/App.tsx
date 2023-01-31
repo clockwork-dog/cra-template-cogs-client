@@ -1,46 +1,55 @@
 import {
-  Hint, Images, Timer, useCogsConfig,
-  useCogsConnection, useCogsEvent, useCogsInputPortValue, useIsConnected, useShowPhase
-} from '@clockworkdog/cogs-client-react';
-import { useCallback, useEffect, useState } from 'react';
-import './App.css';
-import confetti from 'canvas-confetti';
-//import manifestJson from '../../cogs-plugin-manifest.json'
+  Hint,
+  Images,
+  Timer,
+  useCogsConfig,
+  useCogsConnection,
+  useCogsEvent,
+  useCogsInputPortValue,
+  useIsConnected,
+  useShowPhase,
+} from "@clockworkdog/cogs-client-react";
+import { ShowPhase } from "@clockworkdog/cogs-client";
+import { useCallback, useEffect, useState } from "react";
+import "./App.css";
+import confetti from "canvas-confetti";
 
 export default function MediaPlayer() {
-  // For the next version!
-  //const newFancyCogsConnection = useCogsConnection<typeof manifestJson>();
-  const [gameResult, setGameResult] = useState('');
-  const cogsConnection = useCogsConnection<{config: {"Default Background": string}, inputPorts: {Score: number}, inputEvents: {'Game Finished': 'Won' | 'Lost' | 'Finished'}}>();
+  const [gameResult, setGameResult] = useState("");
+  const cogsConnection = useCogsConnection<{
+    config: { "Background Color": string };
+    inputPorts: { Score: number };
+    inputEvents: { "Game Finished": "Won" | "Lost" };
+  }>();
   const isConnected = useIsConnected(cogsConnection);
   const showPhase = useShowPhase(cogsConnection);
   const searchParams = new URLSearchParams(window.location.search);
-  const clientId = searchParams.get('name');
+  const clientId = searchParams.get("name");
 
-  const cogsBackgroundColor = useCogsConfig(cogsConnection)["Default Background"];
+  const cogsBackgroundColor = useCogsConfig(cogsConnection)["Background Color"];
   const score = useCogsInputPortValue(cogsConnection, "Score");
 
-  const handleGameFinished = useCallback((value: 'Won' | 'Lost' | 'Finished') => {
-    if (value === "Finished") {
-      setGameResult('');
-    } else if (value === "Won") {
-      setGameResult(value);
-      confetti()
+  const handleGameFinished = useCallback((value: "Won" | "Lost") => {
+    if (value === "Won") {
+      confetti();
+      return setGameResult(value);
     } else if (value === "Lost") {
-      setGameResult(value);
+      return setGameResult(value);
     }
-  }, [])
+  }, []);
 
-  useCogsEvent(cogsConnection, 'Game Finished', handleGameFinished)
-  console.log(showPhase);
+  useCogsEvent(cogsConnection, "Game Finished", handleGameFinished);
 
   useEffect(() => {
+    if (showPhase === ShowPhase.Setup) {
+      return setGameResult("");
+    }
     const originalTitle = document.title;
-    document.title = clientId + ' - COGS';
+    document.title = clientId + " - COGS";
     return () => {
       document.title = originalTitle;
     };
-  }, [clientId]);
+  }, [clientId, showPhase]);
 
   useEffect(() => {
     const body = document.body;
@@ -49,24 +58,24 @@ export default function MediaPlayer() {
 
   return (
     <div className="container">
-      {(!isConnected) && (
-        <div id="connection-status" className={isConnected ? 'connected' : ''}>
+      {!isConnected && (
+        <div id="connection-status" className={isConnected ? "connected" : ""}>
           Connecting...
         </div>
       )}
-      <div className='numbers'>
+      <div className="numbers">
         <section>
           <p>Timer</p>
-          <Timer  connection={cogsConnection} />
+          <Timer connection={cogsConnection} />
         </section>
         <section>
           <p>Score</p>
           <p>{score}</p>
         </section>
       </div>
-      {showPhase === "in progress" && (
+      {gameResult && (
         <article>
-          {gameResult === "Won" && <p>You won! Congrats!! 🎉</p>}
+          {gameResult === "Won" && <p>You won! Congrats!!</p>}
           {gameResult === "Lost" && (
             <div className="dark-souls">
               <p>You Lost</p>
@@ -74,7 +83,9 @@ export default function MediaPlayer() {
           )}
         </article>
       )}
-      <p><Hint  connection={cogsConnection} /></p>
+      <p>
+        <Hint connection={cogsConnection} />
+      </p>
       <Images connection={cogsConnection} fullscreen />
     </div>
   );

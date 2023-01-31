@@ -59,7 +59,7 @@ article {
   color: white;
   letter-spacing: 5px;
   font-weight: 400;
-  animation: fade-in 10s linear, text-zoom 5s linear;
+  animation: fade-in 5s linear, text-zoom 5s linear;
 }
 
 
@@ -72,9 +72,6 @@ article {
     opacity: 1;
   }
 
-  100% {
-    opacity: 1;
-  }
 }
 
 @keyframes text-zoom {
@@ -82,19 +79,7 @@ article {
     font-size: 2rem;
   }
 
-  25% {
-    font-size: 3rem;
-  }
-
   50% {
-    font-size: 4rem;
-  }
-
-  75% {
-    font-size: 5rem;
-  }
-
-  100% {
     font-size: 5rem;
   }
 }
