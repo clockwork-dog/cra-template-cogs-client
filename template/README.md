@@ -32,7 +32,7 @@ Use your custom Media Master's state `Score` and bind it to any behaviour of you
 
 ### Events
 
-Use your custom Media Master's event `Game Finished` and bind its option `Won` & `Lost` to any behaviour of your choice.  For example, you can trigger `Won` when your `Score` reach 10, and trigger `Lost` if your score fell down to 1. When `Won` or `Lost` are triggered, you get a fun animation on your custom Media Master's interface!
+Use your custom Media Master's event `Game Finished` and bind its option `Won` & `Lost` to any behaviour of your choice.  For example, you can trigger `Won` when your `Score` reach 10, and trigger `Lost` if your score fall to 1. When `Won` or `Lost` are triggered, you get a fun animation on your custom Media Master's interface!
 
 ### Config or Media setup
 
