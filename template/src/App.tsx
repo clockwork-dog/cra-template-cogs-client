@@ -5,7 +5,7 @@ import {
   useCogsConfig,
   useCogsConnection,
   useCogsEvent,
-  useCogsInputPortValue,
+  useCogsStateValue,
   useIsConnected,
   useShowPhase,
 } from "@clockworkdog/cogs-client-react";
@@ -13,28 +13,30 @@ import { ShowPhase } from "@clockworkdog/cogs-client";
 import { useCallback, useEffect, useState } from "react";
 import "./App.css";
 import confetti from "canvas-confetti";
+import manifest from "./cogs-plugin-manifest.js";
 
 export default function MediaPlayer() {
   const [gameResult, setGameResult] = useState("");
-  const cogsConnection = useCogsConnection<{
-    config: { "Background Color": string };
-    inputPorts: { Score: number };
-    inputEvents: { "Game Finished": "Won" | "Lost" };
-  }>();
+  const cogsConnection = useCogsConnection<typeof manifest>();
   const isConnected = useIsConnected(cogsConnection);
   const showPhase = useShowPhase(cogsConnection);
   const searchParams = new URLSearchParams(window.location.search);
   const clientId = searchParams.get("name");
 
   const cogsBackgroundColor = useCogsConfig(cogsConnection)["Background Color"];
-  const score = useCogsInputPortValue(cogsConnection, "Score");
+  const score = useCogsStateValue(cogsConnection, "Score");
+
+  const [selectedButton, setSelectedButton] = useState(1);
+
+  useEffect(() => {
+    cogsConnection.setState({ "Selected Button": selectedButton });
+  }, [cogsConnection, selectedButton]);
 
   const handleGameFinished = useCallback((value: "Won" | "Lost") => {
+    setGameResult(value);
+
     if (value === "Won") {
       confetti();
-      return setGameResult(value);
-    } else if (value === "Lost") {
-      return setGameResult(value);
     }
   }, []);
 
@@ -73,6 +75,23 @@ export default function MediaPlayer() {
           <p>{score}</p>
         </section>
       </div>
+      <div className="buttons">
+        {[1, 2, 3, 4, 5].map((i) => (
+          <div
+            key={i}
+            className={`button ${i === selectedButton ? "selected" : ""}`}
+            onClick={() => setSelectedButton(i)}
+          >
+            {i}
+          </div>
+        ))}
+        <div
+          className="button go"
+          onClick={() => cogsConnection.sendEvent("Go Button Pressed")}
+        >
+          GO!
+        </div>
+      </div>
       {gameResult && (
         <article>
           {gameResult === "Won" && <p>You won! Congrats!!</p>}
@@ -86,7 +105,10 @@ export default function MediaPlayer() {
       <p>
         <Hint connection={cogsConnection} />
       </p>
-      <Images connection={cogsConnection} fullscreen />
+      <Images
+        connection={cogsConnection}
+        fullscreen={{ style: { pointerEvents: "none" } }}
+      />
     </div>
   );
 }
