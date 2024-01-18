@@ -1,11 +1,11 @@
 @font-face {
-  font-family: 'Silkscreen';
-  src: url('./Silkscreen/Silkscreen-Regular.ttf');
+  font-family: "Silkscreen";
+  src: url("./Silkscreen/Silkscreen-Regular.ttf");
 }
 
 body {
   color: black;
-  font-family: 'Silkscreen', cursive;
+  font-family: "Silkscreen", cursive;
 }
 
 .container {
@@ -32,7 +32,8 @@ section {
   border-radius: 10px;
 }
 
-section p, section div {
+section p,
+section div {
   margin: 0;
 }
 
@@ -62,6 +63,40 @@ article {
   animation: fade-in 5s linear, text-zoom 5s linear;
 }
 
+.buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.button {
+  background-color: #322b6c;
+  border-radius: 10px;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  user-select: none;
+}
+
+.button.go {
+  background-color: #8b348c;
+}
+
+.button:not(.selected) {
+  cursor: pointer;
+}
+
+.button:not(.selected):hover {
+  opacity: 0.7;
+}
+
+.button.selected {
+  background-color: #f5f5f5;
+  color: #322b6c;
+}
 
 @keyframes fade-in {
   0% {
@@ -71,7 +106,6 @@ article {
   25% {
     opacity: 1;
   }
-
 }
 
 @keyframes text-zoom {
