@@ -14,7 +14,7 @@
       "@types/canvas-confetti": "^1.6.0",
       "canvas-confetti": "^1.6.0",
       "cross-env": "7",
-      "typescript": "4"
+      "typescript": "5"
     },
     "eslintConfig": {
       "extends": ["react-app"]
