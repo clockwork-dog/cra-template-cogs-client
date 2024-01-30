@@ -18,6 +18,11 @@
     },
     "eslintConfig": {
       "extends": ["react-app"]
+    },
+    "overrides": {
+      "react-scripts": {
+        "typescript": "^5"
+      }
     }
   }
 }
