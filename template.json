@@ -2,6 +2,7 @@
   "package": {
     "homepage": "./",
     "scripts": {
+      "postinstall": "node scripts/createManifestSymlink.js",
       "start": "cross-env BROWSER=scripts/openSimulator.js PORT=3001 react-scripts start"
     },
     "dependencies": {
