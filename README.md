@@ -1,3 +1,9 @@
+> [!WARNING]
+> 
+> This template is deprecated. Please use the `cogs-sdk` project template:
+> https://github.com/clockwork-dog/cogs-sdk#getting-started-using-the-template
+
+
 # COGS Client - Create React App template
 
 Quickly create custom Media Master content for [COGS](https://cogs.show) with [`create-react-app`](https://create-react-app.dev).
